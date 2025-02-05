@@ -15,7 +15,7 @@ const BrowseSpaces= () => {
     hover:shadow-md
     cursor-pointer">
         <div className="
-        flex flex-row items-center justify-between">
+        flex flex-row items-center justify-end gap-7">
             <div className="
             text-sm
             font-semibold

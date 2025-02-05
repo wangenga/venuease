@@ -9,7 +9,7 @@ const UserMenu = () => {
     const [isOpen, setisOpen] = useState(false);
 
     const toggleOpen = useCallback!(() => {
-        setisOpen(!isOpen);
+        setisOpen((value) => !value);
     }, []);
     
   return (
