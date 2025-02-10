@@ -5,11 +5,11 @@ import Avatar from './Avatar';
 import { useCallback, useState } from 'react';
 import MenuItem from './MenuItem';
 
-const UserMenu = () => {
-    const [isOpen, setisOpen] = useState(false);
+const UserMenu = ({ onLoginClick, onSignUpClick }: { onLoginClick: () => void, onSignUpClick: () => void }) => {
+    const [isOpen, setIsOpen] = useState(false);
 
-    const toggleOpen = useCallback!(() => {
-        setisOpen((value) => !value);
+    const toggleOpen = useCallback(() => {
+        setIsOpen((value) => !value);
     }, []);
     
   return (
@@ -54,10 +54,10 @@ const UserMenu = () => {
                     <div className='
                     flex flex-col cursor-pointer'>
                         <MenuItem 
-                        onClick={()=>{}}
+                        onClick={onLoginClick}
                         label='Login' />
                         <MenuItem 
-                        onClick={()=>{}}
+                        onClick={onSignUpClick}
                         label='Sign Up' />
                     </div>
                 </div>

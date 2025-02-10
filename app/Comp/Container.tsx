@@ -14,6 +14,7 @@ const Container: React.FC<ContainerProps> = ({ children }) => {
         px-4
         sm:px-2">
             {children}
+
         </div>
     );
    }
