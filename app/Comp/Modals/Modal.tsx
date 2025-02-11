@@ -2,6 +2,7 @@
 
 import React, { useCallback, useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
+import Button from "../Button";
 
 interface ModalProps {
     isOpen: boolean;
@@ -57,93 +58,53 @@ const Modal: React.FC<ModalProps> = ({
         }
 
   return (
-    <div className="
-    justify-center
-    items-center
-    flex
-    overflow-x-hidden
-    inset-0
-    fixed
-    z-50
-    focus:outline-none
-    bg-neutral-800/70
-    ">
-    <div className="
-    relative
-    w-full
-    md:w-4/6
-    lg:w-3/6
-    xl:w-2/5
-    h-full
-    mx-auto
-    my-6
-    lg:h-auto
-    md:h-auto">
-        <div className={`
-        translate
-        duration-[400ms]
-        h-full
-        ${showModal ? 'translate-y-0' : 'translate-y-full'}
-        ${showModal ? 'opacity-100' : 'opacity-0'}
-    `}>
-        <div className="
-        translate
-        h-full
-        lg:h-auto
-        md:h-auto
-        border-0
-        rounded-lg
-        shadow-lg
-        relative
-        w-full
-        flex
-        flex-col
-        bg-white
-        outline-none
-        focus:outline-
-        none">
-            <div className="
-            flex
-            items-center
-            p-6
-            rounded-t
-            justify-center
-            relative
-            border-b-[1px]">
-                <button
-                onClick={handleClose} className="
-                p-1
-                border-0
-                hover:opac1
-                ty=70
-                transition
-                absolute
-                left=9">
-                    <IoMdClose  size={20}/>
-
+    <div className="fixed inset-0 flex items-center justify-center z-50 bg-neutral-800/70 ">
+    <div className="relative w-full md:w-4/6 lg:w-3/6 xl:w-2/5 bg-white rounded-lg shadow-lg p-6">
+        {/* Modal Content - Split Layout */}
+        <div className="grid grid-cols-2">
+            {/* Left Section (Form) */}
+            <div className="px-6 pt-9 ">
+                {/* Close Button */}
+                <button onClick={handleClose} className="absolute top-4 left-4 text-gray-600 hover:text-gray-900">
+                    <IoMdClose size={20} />
                 </button>
-                <div
-                className="font-semibold text-lg">
-                    {title}
-                </div>
+
+                {/* Welcome Text */}
+                <h2 className="text-3xl font-regular text-[#171666] opacity-85 pt-7">HELLO,</h2>
+                <h2 className="text-2xl font-bold text-[#171666] opacity-85 mb-6">WELCOME!</h2>
+
+                {/* Login Form */}
+                <form className="space-y-4">
+                    <input type="email" placeholder="Email" className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+                    <input type="password" placeholder="Password" className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+
+                    {/* Remember Me & Forgot Password */}
+                    <div className="flex items-center justify-between text-sm text-gray-600">
+                        <label className="flex items-center space-x-2">
+                            <input type="checkbox" className="form-checkbox" />
+                            <span>Remember me?</span>
+                        </label>
+                        <a href="#" className="text-blue-600 hover:underline">Forgot Password?</a>
+                    </div>
+
+                    {/* Login Button */}
+                    <Button label="Login" onClick={onSubmit} />
+
+                    {/* Signup Link */}
+                    <p className="text-center text-sm text-gray-600 mt-4">
+                        Don’t have an account? <a href="#" className="text-blue-600 font-semibold hover:underline">Signup</a>
+                    </p>
+                </form>
             </div>
-            <div
-            className="p-6 relative flex-auto">
-                {body}
-            </div>
-            <div
-            className="flex flex-col p-6 gap-2">
-                <div
-                className="flex flex-row items-center gap-4 w-full">
-                    Button Component
-                </div>
+
+            {/* Right Section (Image) */}
+            <div className="hidden md:block">
+                <img src="../images/login-visual.png" alt="Login Visual" className="h-full w-full object-cover rounded-r-lg" />
             </div>
         </div>
+    </div>
 </div>
-
-    </div>
-    </div>
-  );
+);
 }
 
 export default Modal
