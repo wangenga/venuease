@@ -90,7 +90,7 @@ const Modal: React.FC<ModalProps> = ({
 
 </div>
 
-<div className="px-6 pt-9 ">
+<div className="px-6 pt-6 ">
     {/* Close Button */}
     <button onClick={handleClose} className="absolute top-4 left-4 text-gray-600 hover:text-gray-900">
         <IoMdClose size={20} />

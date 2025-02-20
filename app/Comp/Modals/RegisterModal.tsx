@@ -11,10 +11,12 @@ import Modal from "./Modal";
 import Heading from "../Heading";
 import Input from "../inputs/Input";
 import toast from "react-hot-toast";
+import useLoginModal from "@/app/hooks/useLoginModal";
 
 const RegisterModal = () => {
 
     const registerModal = useRegisterModal();
+    const loginModal = useLoginModal();
     const [isLoading, setIsLoading ] = useState(false);
 
     const {
@@ -90,7 +92,14 @@ const RegisterModal = () => {
                     Already have an account?
                 </div>
                 <div
-                onClick={registerModal.onClose}
+                onClick={() => {
+                    registerModal.onClose(); // Close Register Modal
+                    setTimeout(() => {
+                        if (!registerModal.isOpen) {
+                        loginModal.onOpen();
+                        }
+                }, 300);
+                }}
                 className="
                 text-blue-600
                 cursor-pointer

@@ -1,4 +1,10 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+VenuEase: A Web-Based Venue Booking and Management Platform
+
+
+This is a system that allows venue owners(hosts) to register their properties, manage availability and offer customizable services such as catering or decor.They will also put down the charges of the services provided. Clients can search for the venue according to the number of guests. They can select the date open on the venue calendar and select the additional services needed. They then send their deposit to reserve the venue. 
+
+
+
 
 ## Getting Started
 

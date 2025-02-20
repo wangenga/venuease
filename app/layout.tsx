@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "./Comp/Navbar";
 import RegisterModal from "./Comp/Modals/RegisterModal";
 import ToasterProvider from "./providers/ToasterProvider";
+import LoginModal from "./Comp/Modals/LoginModal";
+import getCurrentUser from "./actions/getCurrentUser";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,16 +22,21 @@ export const metadata: Metadata = {
   description: "A Web-Based Venue Booking and Management Platform",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: {
+  children: React.ReactNode; 
+}) {
+  const currentUser = await getCurrentUser();
+
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ToasterProvider />
-        <Navbar />
-        <RegisterModal/>
-        <main>{children}</main>
+        <LoginModal />
+        <RegisterModal />
+        <Navbar currentUser={currentUser} />
+        <main>{children}</main> 
       </body>
     </html>
   );
