@@ -1,36 +1,39 @@
 'use client';
 
+import { BiSearch } from "react-icons/bi";
 
 const Search = () => {
-    return (
-        <div className="items-center bg-white shadow-lg rounded-lg p-4 w-full mx-auto hidden sm:block">
-        {/* Activity Input */}
-        <div className="flex-1">
-          <label className="block text-gray-700 font-semibold text-sm">What Event?</label>
-          <p className="mt-1 text-black font-medium">Enter your Activity</p>
-            <button className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg">Search</button>
-          </div>
-        
-      
-        {/* Location */}
-        <div className="flex-1 px-4">
+  return (
+
+    
+
+    <div className="border-1px w-full md:w-auto py-2 px-2 rounded-full shadow-sm hover:shadow-md transition cursor-pointer bg-white">
+      <div className="flex flex-row items-center justify-between">
+      <div  flex-col flex-1 px-4>
+          <label className="block text-gray-700 font-semibold text-sm">Event Type?</label>
+          <div className="text-sm text-black font-semibold px-6">Event</div>
+       </div>
+        <div  flex-col flex-1 px-4>
           <label className="block text-gray-700 font-semibold text-sm">Where?</label>
-          <p className="mt-1 text-black font-medium">Nairobi, 05, KE</p>
-        </div>
-      
-        {/* Date */}
-        <div className="flex-1">
+          <div className="text-sm text-black font-semibold px-6">Location</div>
+       </div>
+       <div  flex-col flex-1 px-4>
           <label className="block text-gray-700 font-semibold text-sm">When?</label>
-          <p className="mt-1 text-black font-medium">Anytime</p>
-        </div>
-      
-        {/* Search Button */}
-        <div className="flex-1">Add Guests
+          <div className="text-sm text-black font-semibold px-6">Date</div>
+       </div>
+       <div  flex-col flex-1 px-4>
+          <label className="block text-gray-700 font-semibold text-sm">Capacity?</label>
+          <div className="text-sm text-black font-semibold px-6">Add Guests</div>
+       </div>
+       <div>
+          <button className="bg-[#5252a1] hover:bg-[#363684] text-white font-bold py-2 px-4 rounded-full">
+            <BiSearch size={24} />
+          </button>
+       </div>
       </div>
-      
-      </div>
-      
-      )
+
+    </div>
+  );
 }
 
-export default Search
+export default Search;
