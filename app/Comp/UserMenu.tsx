@@ -2,7 +2,7 @@
 
 import { AiOutlineMenu } from 'react-icons/ai';
 import Avatar from './Avatar';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import MenuItem from './MenuItem';
 
 import useRegisterModal from '../hooks/useRegisterModal';
@@ -10,24 +10,50 @@ import useLoginModal from '../hooks/useLoginModal';
 import { SafeUser } from '../types';
 import { signOut } from 'next-auth/react';
 
+import useRentModal from '../hooks/useRentModal';
+import { useRouter } from 'next/navigation';
+
 interface UserMenuProps {
     currentUser?: SafeUser | null;
 }
 
 const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
+    const router = useRouter();
     const registerModal = useRegisterModal();
     const loginModal = useLoginModal();
+    const rentModal = useRentModal();
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleOpen = useCallback(() => {
         setIsOpen((value) => !value);
-    }, []);
+    }, [setIsOpen]);
+
+    // Close menu when clicking outside
+    useEffect(() => {
+        if (!isOpen) return;
+
+        const handleClickOutside = () => {
+            setIsOpen(false);
+        };
+
+        document.addEventListener("click", handleClickOutside);
+        return () => document.removeEventListener("click", handleClickOutside);
+    }, [isOpen]);
+
+
+    const onRent = useCallback(() =>{
+        if (!currentUser) {
+            return loginModal.onOpen();
+        }
+        router.push('/rent');
+        
+    }, [currentUser, loginModal, router]);
 
     return (
         <div className="relative">
             <div className="flex flex-row items-center gap-3">
                 <div
-                    onClick={() => {}}
+                    onClick={onRent}
                     className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
                 >
                     List your Spot
@@ -50,7 +76,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                             <>
                                 <MenuItem onClick={() => {}} label="My Bookings" />
                                 <MenuItem onClick={() => {}} label="My Favorites" />
-                                <MenuItem onClick={() => {}} label="List My Space" />
+                                <MenuItem onClick={onRent} label="List My Space" />
                                 <MenuItem onClick={() => signOut()} label="Logout" />
                             </>
                         ) : (

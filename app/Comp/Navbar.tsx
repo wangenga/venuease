@@ -6,7 +6,6 @@ import Container from "./Container";
 import Logo from "./Logo";
 import BrowseSpaces from "./BrowseSpaces";
 import UserMenu from "./UserMenu";
-import Modal from "./Modals/Modal";
 import { SafeUser } from "../types";
 import EventTypes from "./EventTypes";
 import HeroSection from "./HeroSection";
@@ -43,9 +42,6 @@ const Navbar: React.FC<NavbarProps> = ({
                         </div>
                     </Container>
                 </div>
-                <HeroSection />
-               <EventTypes
-                /> 
             </div>
         </>
     );

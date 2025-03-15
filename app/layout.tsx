@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Comp/Navbar";
-import RegisterModal from "./Comp/Modals/RegisterModal";
 import ToasterProvider from "./providers/ToasterProvider";
 import LoginModal from "./Comp/Modals/LoginModal";
+import RegisterModal from "./Comp/Modals/RegisterModal";
 import getCurrentUser from "./actions/getCurrentUser";
 
 const geistSans = Geist({
@@ -27,7 +27,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode; 
 }) {
-  const currentUser = await getCurrentUser();
+  const currentUser = await getCurrentUser(); // Ensure user state is available globally
 
   return (
     <html lang="en">
@@ -36,7 +36,7 @@ export default async function RootLayout({
         <LoginModal />
         <RegisterModal />
         <Navbar currentUser={currentUser} />
-        <main>{children}</main> 
+        <main >{children}</main> {/* This ensures pages render inside layout */}
       </body>
     </html>
   );

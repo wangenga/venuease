@@ -48,6 +48,12 @@ const RegisterModal = () => {
             })
     }
 
+    const toggle = useCallback(() => {
+        registerModal.onClose();
+        loginModal.onOpen();
+    }, [loginModal, registerModal]);
+
+
     const bodyContent =(
         <div className="flex flex-col gap-4">
             <Heading
@@ -92,14 +98,7 @@ const RegisterModal = () => {
                     Already have an account?
                 </div>
                 <div
-                onClick={() => {
-                    registerModal.onClose(); // Close Register Modal
-                    setTimeout(() => {
-                        if (!registerModal.isOpen) {
-                        loginModal.onOpen();
-                        }
-                }, 300);
-                }}
+                onClick={toggle}
                 className="
                 text-blue-600
                 cursor-pointer

@@ -53,19 +53,17 @@ const LoginModal = () => {
         });
     };
 
+    const toggle = useCallback(() => {
+        loginModal.onClose();
+        registerModal.onOpen(); 
+    }, [loginModal, registerModal]);
+    
     const footerContent = (
         <div className="text-center text-sm text-gray-600 mt-4">
             <div className="justify-center flex flex-row items-center gap-2">
                 <div>Don't have an account?</div>
                 <div
-                    onClick={() => {
-                        loginModal.onClose();
-                        setTimeout(() => {
-                            if (!loginModal.isOpen) {
-                            registerModal.onOpen();
-                            }
-                        }, 300);
-                    }}
+                    onClick={toggle}
                     className="text-blue-600 cursor-pointer hover:underline"
                 >
                     Sign up
