@@ -33,8 +33,8 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ToasterProvider />
-        <LoginModal />
-        <RegisterModal />
+        {!currentUser && <LoginModal />}
+        {!currentUser && <RegisterModal />}
         <Navbar currentUser={currentUser} />
         <main >{children}</main> {/* This ensures pages render inside layout */}
       </body>

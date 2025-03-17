@@ -6,3 +6,11 @@ html, body, :root{
     height: 100%;
     background-color: white;
 }
+
+
+.leaflet-bottom
+.leaflet-control
+.leaflet-pane
+.leaflet-top {
+    z-index: [1000] !important;
+}

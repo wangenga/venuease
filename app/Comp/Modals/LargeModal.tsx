@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import Button from "../Button";
 
-interface RentModalProps {
+interface LargeModalProps {
     isOpen?: boolean;
     onClose: () => void;
     onSubmit: () => void;
@@ -17,13 +17,13 @@ interface RentModalProps {
     secondaryAction?: () => void;
 }
 
-const RentModal: React.FC<RentModalProps> = ({
+const LargeModal: React.FC<LargeModalProps> = ({
     isOpen, onClose, onSubmit, title, body, footer,
     disabled, actionLabel, secondaryLabel, secondaryAction
 }) => {
-    const [showModal, setShowModal] = useState(isOpen);
+    const [showLargeModal, setShowLargeModal] = useState(isOpen);
     useEffect(() => {
-        setShowModal(isOpen);
+        setShowLargeModal(isOpen);
     }, [isOpen]);
 
     const handleClose = useCallback(() =>
@@ -31,7 +31,7 @@ const RentModal: React.FC<RentModalProps> = ({
         if (disabled) {
             return;
         }
-        setShowModal(false);
+        setShowLargeModal(false);
         setTimeout(() =>{
             onClose();
         },400);
@@ -58,16 +58,16 @@ const RentModal: React.FC<RentModalProps> = ({
         }
 
   return (
-    <div className="fixed inset-0 overflow-y-auto flex items-center justify-center z-50 bg-neutral-800/70">
-        <div className="relative w-full h-full bg-white ">
+    <div className="relative w-full min-h-screen bg-neutral-200/70 flex items-center justify-center ">
+        <div className=" w-full md:w-5/6 lg:w-5/6 xl:w-5/6 mx-auto bg-white py-4 my-9 px-8 shadow-sm rounded-lg ">
             {/* Modal Content*/}
             <div
             className={`
             translate
             duration-400
             h-full
-            ${showModal ? 'translate-y-0' : 'translate-y-full'}
-            ${showModal ? 'opacity-100' : 'opacity-0'}
+            ${showLargeModal ? 'translate-y-0' : 'translate-y-full'}
+            ${showLargeModal ? 'opacity-100' : 'opacity-0'}
             `}>
                 <div
                     className="
@@ -88,14 +88,20 @@ const RentModal: React.FC<RentModalProps> = ({
                     ">
                 </div>
             </div>
-            <div className="px-6 pt-6 ">
+            <div className="px-6 pt-2 pb-3">
+                {title && (
+                    <div className=" flex items-center justify-center">
+                        <h2 className="text-2xl font-bold text-[#18306C] ">{title}</h2>
+                    </div>
+                )}
+                <hr className="w-full border-t border-gray-200 my-5" />
                 {/* Body */}
                 <div className="relative flex-auto">
                     {body}
                 </div>
                  {/* Footer */}
-                 <div className="flex flex-col gap-2 py-6">
-                    <div className="flex flex-row items-center gap-4 w-full">
+                 <div className="flex flex-col gap-2 pt-10">
+                    <div className="flex flex-row items-center gap-4 w-50%">
                         {secondaryAction && secondaryLabel && (
                             <Button
                                 outline
@@ -119,4 +125,4 @@ const RentModal: React.FC<RentModalProps> = ({
 );
 }
 
-export default RentModal
+export default LargeModal

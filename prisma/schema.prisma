@@ -34,6 +34,7 @@ model Venue{
   description String
   imageSrc String
   createdAt DateTime @default(now())
+  eventType String
   roomCount Int
   bathroomCount Int
   capacity Int
