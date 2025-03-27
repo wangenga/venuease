@@ -24,11 +24,11 @@ model User {
   updatedAt DateTime @updatedAt
   favoriteIds String[] @db.ObjectId
 
-  venues Venue[]
+  listings Listing[]
   bookings Booking[]
 }
 
-model Venue{
+model Listing{
   id String @id @default(auto()) @map("_id") @db.ObjectId
   title String
   description String
@@ -47,15 +47,17 @@ model Venue{
   bookings Booking[]
 }
 
-model Booking{
+model Booking {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   userId String @db.ObjectId
-  venueId String @db.ObjectId
+  listingId String @db.ObjectId
   startDate DateTime
   endDate DateTime
   totalPrice Int
+  selectedServices Json?
   createdAt DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  venue Venue @relation(fields: [venueId], references: [id], onDelete: Cascade)
+  listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade) // ✅ Fix here (was 'listings')
 }
+

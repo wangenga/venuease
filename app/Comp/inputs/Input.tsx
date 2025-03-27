@@ -14,6 +14,7 @@ interface InputProps {
     required?: boolean;
     register: UseFormRegister<FieldValues>,
     errors: FieldErrors
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 
 }
 
@@ -30,14 +31,9 @@ const Input: React.FC<InputProps> = ({
   return (
     <div className="w-full relative">
       {formatPrice && (
-        <BiDollar
-          size={24}
-          className="
-          text-neutral-700
-          absolute
-          top-5
-          left-2"
-        />
+        <div className="text-neutral-700 absolute top-3 left-2 flex items-center mr-5">
+          Ksh
+        </div>
       )}
       <input
         id={id}
@@ -48,7 +44,7 @@ const Input: React.FC<InputProps> = ({
         className={`
           peer
           w-full
-          px-4
+          px-10
           py-3
           font-light
           rounded-md

@@ -58,7 +58,7 @@ const Modal: React.FC<ModalProps> = ({
         }
 
   return (
-    <div className="fixed outline-none focus:outline-none inset-0 overflow-x-hidden overflow-y-auto flex items-center justify-center z-50 bg-neutral-800/70 ">
+    <div className="fixed outline-none focus:outline-none inset-0 overflow-x-hidden overflow-y-auto flex items-center justify-center z-[1100] bg-neutral-800/70 ">
     <div className="relative w-full h-full md:w-4/6 lg:w-3/6 xl:w-1/3 mx-auto bg-white rounded-lg shadow-lg p-6 lg:h-auto md:h-auto">
         {/* Modal Content*/}
         <div

@@ -1,16 +1,18 @@
-// app/actions/getCurrentUser.ts
+// pages/api/getCurrentUserInternal.ts
+import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
 import prisma from "@/app/libs/prismadb";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { SafeUser } from "@/app/types";
 
-export default async function getCurrentUser(): Promise<SafeUser | null> {
+
+export async function getCurrentUserInternal(
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<SafeUser | null> {
   try {
-    // In the App Router (server components), getServerSession doesn't need req/res.
-    const session = await getServerSession(authOptions);
-    if (!session?.user?.email) {
-      return null;
-    }
+    const session = await getServerSession(req, res, authOptions);
+    if (!session?.user?.email) return null;
 
     const currentUser = await prisma.user.findUnique({
       where: { email: session.user.email as string },
