@@ -33,19 +33,19 @@ export default async function getBookings(params: Iparams) {
         },
     });
 
-    const safeBookings = bookings.map((booking) => ({
+    const safeBookings = bookings
+      .filter((booking) => booking.listing !== null)
+      .map((booking) => ({
         ...booking,
         createdAt: booking.createdAt.toISOString(),
         startDate: booking.startDate.toISOString(),
         endDate: booking.endDate.toISOString(),
-        listing: booking.listing
-        ? {
-            ...booking.listing,
-            createdAt: booking.listing.createdAt.toISOString(),
-            }
-        : null, 
-    }));
-
+        listing: {
+          ...booking.listing!,
+          createdAt: booking.listing!.createdAt.toISOString(),
+        },
+      }));
+      
     return safeBookings;
     }   catch (error:any){
         throw new Error (error)

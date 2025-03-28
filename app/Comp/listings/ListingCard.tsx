@@ -1,7 +1,7 @@
 'use client';
 import React, { useCallback, useMemo } from 'react';
-import { Listing, Booking } from "@prisma/client";
-import { SafeUser } from "@/app/types";
+
+import { SafeBooking, SafeListing, SafeUser } from "@/app/types";
 import { useRouter } from "next/navigation";
 import useCountries from '@/app/hooks/useCountries';
 import { format } from 'date-fns';
@@ -11,13 +11,14 @@ import Button from '../Button';
 
 
 interface ListingCardProps {
-  data: Listing;
-  booking?: Booking;
+  data: SafeListing;
+  booking?: SafeBooking;
   onAction?: (id: string) => void;
   disabled?: boolean;
   actionLabel?: string;
   actionId?: string;
   currentUser?: SafeUser | null;
+  hideInclusions?: boolean;
 }
 
 const ListingCard: React.FC<ListingCardProps> = ({
@@ -28,6 +29,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
   actionLabel,
   actionId = '',
   currentUser,
+  hideInclusions = false,
 }) => {
   const router = useRouter();
   const { getByValue } = useCountries();
@@ -87,15 +89,14 @@ const ListingCard: React.FC<ListingCardProps> = ({
         {bookingDate || data.eventType}
         </div>
         <div className="flex flex-row items-center gap-1">
-        <div className="font-semibold">
-            Kshs {price}
-        </div>
-        {booking && (
-            <div className="font-light">day</div>
-        )}
-        <div className="font-light ml-2">
-            without inclusions
-        </div>
+          <div className="font-semibold">
+              Kshs {price}
+          </div>
+          {!hideInclusions && (
+          <div className="font-light ml-2">
+              without services
+          </div>
+          )}
         </div>
         {onAction && actionLabel && (
         <Button
