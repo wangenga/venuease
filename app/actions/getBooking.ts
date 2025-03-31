@@ -7,30 +7,34 @@ interface Iparams {
 }
 
 export default async function getBookings(params: Iparams) {
-    try {
+  try {
     const { listingId, userId, authorId } = params;
     const query: any = {};
 
     if (listingId) {
-        query.listingId = listingId;
+      query.listingId = listingId;
     }
 
     if (userId) {
-        query.userId = userId;
+      query.userId = userId;
     }
 
     if (authorId) {
-        query.listing = { userId: authorId };
+      query.listing = { userId: authorId };
     }
 
     const bookings = await prisma.booking.findMany({
-        where: query,
-        include: {
-        listing: true, 
+      where: query,
+      include: {
+        listing: {
+          include: { 
+            user: true, // Include the owner of the listing
+          },
         },
-        orderBy: {
+      },
+      orderBy: {
         createdAt: "desc",
-        },
+      },
     });
 
     const safeBookings = bookings
@@ -40,14 +44,18 @@ export default async function getBookings(params: Iparams) {
         createdAt: booking.createdAt.toISOString(),
         startDate: booking.startDate.toISOString(),
         endDate: booking.endDate.toISOString(),
-        listing: {
-          ...booking.listing!,
-          createdAt: booking.listing!.createdAt.toISOString(),
-        },
+        listing: booking.listing
+          ? {
+              ...booking.listing,
+              createdAt: booking.listing.createdAt.toISOString(),
+              // Include the user as-is or map it to your safe user type if needed:
+              user: booking.listing.user,
+            }
+          : null,
       }));
-      
+
     return safeBookings;
-    }   catch (error:any){
-        throw new Error (error)
-    }
+  } catch (error: any) {
+    throw new Error(error);
+  }
 }

@@ -3,7 +3,7 @@
 import React, { useCallback, useState } from 'react'
 import { useRouter } from 'next/navigation';
 
-import { SafeBooking, SafeUser } from '../types'
+import { SafeListing, SafeUser } from '../types'
 
 import Container from '../Comp/Container';
 import Heading from '../Comp/Heading';
@@ -12,13 +12,13 @@ import toast from 'react-hot-toast';
 import ListingCard from '../Comp/listings/ListingCard';
 import Button from '../Comp/Button';
 
-interface EventsClientProps {
-    bookings: SafeBooking[];
+interface ListingsClientProps {
+    listings: SafeListing[];
     currentUser?: SafeUser | null;
 }
 
-const EventsClient: React.FC<EventsClientProps> = ({
-    bookings, currentUser
+const ListingsClient: React.FC<ListingsClientProps> = ({
+    listings, currentUser
 }) => {
     const router = useRouter();
     const [ deletingId, setDeletingId ] = useState('');
@@ -26,10 +26,10 @@ const EventsClient: React.FC<EventsClientProps> = ({
     const onCancel = useCallback((id: string) => {
         setDeletingId(id);
 
-        axios.delete(`/api/bookings/${id}`)
+        axios.delete(`/api/listings/${id}`)
 
         .then(() => {
-            toast.success("Booking Cancelled");
+            toast.success("Listing Deleted");
             router.refresh();
         })
         .catch((error) => {
@@ -45,8 +45,8 @@ const EventsClient: React.FC<EventsClientProps> = ({
         <Container>
             <div className="flex items-center justify-between">
                 <Heading 
-                    title='Events'
-                    subtitle='Your current and future events'
+                    title='Properties'
+                    subtitle='List of your properties'
                 />
                 <div>
                     <Button 
@@ -59,15 +59,14 @@ const EventsClient: React.FC<EventsClientProps> = ({
                 </div>
             </div>
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8 " >
-                {bookings.map((booking) => (
+                {listings.map((listing) => (
                     <ListingCard
-                    key={booking.id}
-                    data={booking.listing}
-                    booking={booking}
-                    actionId={booking.id}
+                    key={listing.id}
+                    data={listing}
+                    actionId={listing.id}
                     onAction={onCancel}
-                    disabled={deletingId === booking.id}
-                    actionLabel="Cancel Event"
+                    disabled={deletingId === listing.id}
+                    actionLabel="Delete Listing"
                     currentUser={currentUser}
                     hideInclusions={true} // Hide "without inclusions"
                     />
@@ -78,4 +77,4 @@ const EventsClient: React.FC<EventsClientProps> = ({
   )
 }
 
-export default EventsClient
+export default ListingsClient

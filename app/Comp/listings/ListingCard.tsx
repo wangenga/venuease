@@ -3,11 +3,11 @@ import React, { useCallback, useMemo } from 'react';
 
 import { SafeBooking, SafeListing, SafeUser } from "@/app/types";
 import { useRouter } from "next/navigation";
-import useCountries from '@/app/hooks/useCountries';
 import { format } from 'date-fns';
 import Image from 'next/image';
 import FavouriteButton from './FavouriteButton';
 import Button from '../Button';
+import useKenyaTowns from '@/app/hooks/useKenyaTowns';
 
 
 interface ListingCardProps {
@@ -32,8 +32,8 @@ const ListingCard: React.FC<ListingCardProps> = ({
   hideInclusions = false,
 }) => {
   const router = useRouter();
-  const { getByValue } = useCountries();
-  const location = getByValue(data.locationValue)
+  const { getTownByValue } = useKenyaTowns();
+  const location = getTownByValue(data.locationValue)
   const handleCancel = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation();

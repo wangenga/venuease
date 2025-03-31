@@ -29,15 +29,15 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
 
     const updatedQuery: any = {
       ...currentQuery,
-      eventTypes: label
+      eventType: label
     }
 
-    if (params?.get('eventTypes') === label) {
-      delete updatedQuery.category;
+    if (params?.get('eventType') === label) {
+      delete updatedQuery.eventType;
     }
 
     const url = qs.stringifyUrl({
-      url: '/',
+      url: '/browsespaces',
       query: updatedQuery
     },{ skipNull: true });
 

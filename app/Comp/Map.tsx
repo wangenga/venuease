@@ -1,11 +1,8 @@
 'use client';
-import React from 'react'
-import L, { icon } from 'leaflet'
-import { MapContainer, TileLayer, Marker} from 'react-leaflet'
-import 'leaflet/dist/leaflet.css'
-import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png'
-import markerIcon from 'leaflet/dist/images/marker-icon.png'
-import markerShadow from 'leaflet/dist/images/marker-shadow.png'
+import React, { useEffect, useState } from 'react';
+import L from 'leaflet';
+import { MapContainer, TileLayer, Marker, GeoJSON, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 
 //@ts-ignore
 delete L.Icon.Default.prototype._getIconUrl;
@@ -16,30 +13,51 @@ L.Icon.Default.mergeOptions({
 });
 
 interface MapProps {
-    center?: number[]
+  center?: number[];
 }
 
-const Map: React.FC<MapProps> = ({
-    center
-}) => {
+const Map: React.FC<MapProps> = ({ center }) => {
+  const [geoJsonData, setGeoJsonData] = useState<any>(null);
+
+  // Load Kenya's county boundaries from the GeoJSON file in the public folder
+  useEffect(() => {
+    fetch('/kenyaTowns.json')
+      .then((response) => response.json())
+      .then((data) => setGeoJsonData(data))
+      .catch((error) => console.error('Error loading GeoJSON:', error));
+  }, []);
+
+  // Use provided center or a default coordinate (Kenya's approximate center)
+  const mapCenter = (center as L.LatLngExpression) || [-0.0236, 37.9062];
+
   return (
     <MapContainer
-        center={center as L.LatLngExpression || [-0.0236, 37.9062]}
-        zoom={5}
-        scrollWheelZoom={false}
-        className = "h-[35vh] rounded-sm"
+      center={mapCenter}
+      zoom={6}
+      scrollWheelZoom={false}
+      className="h-[35vh] rounded-sm"
     >
-    <TileLayer
+      <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    />
-    {center && (
-        <Marker 
-            position={center as L.LatLngExpression} 
-        />
-    )}
-    </MapContainer>
-  )
-}
+      />
 
-export default Map
+      {/* Render a single marker if a center is provided */}
+      {center && (
+        <Marker position={center as L.LatLngExpression}>
+          <Popup>Selected County</Popup>
+        </Marker>
+      )}
+
+      {/* Overlay the GeoJSON data for Kenya's counties */}
+      {geoJsonData && (
+        <GeoJSON
+          data={geoJsonData}
+          style={{ fillColor: 'blue', fillOpacity: 0.3, weight: 1 }}
+        />
+      )}
+    </MapContainer>
+  );
+};
+
+export default Map;

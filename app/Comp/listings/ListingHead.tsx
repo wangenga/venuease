@@ -1,11 +1,12 @@
 'use client';
 
-import useCountries from '@/app/hooks/useCountries';
+import useKenyaCounties from '@/app/hooks/useKenyaTowns';
 import { SafeUser } from '@/app/types';
 import React from 'react';
 import Heading from '../Heading';
 import FavouriteButton from './FavouriteButton';
 import Image from 'next/image';
+import useKenyaTowns from '@/app/hooks/useKenyaTowns';
 
 interface ListingHeadProps {
   title: string;
@@ -22,8 +23,8 @@ const ListingHead: React.FC<ListingHeadProps> = ({
   id,
   currentUser,
 }) => {
-  const { getByValue } = useCountries();
-  const location = getByValue(locationValue);
+  const { getTownByValue } = useKenyaTowns();
+  const location = getTownByValue(locationValue);
 
   return (
     <>
@@ -47,3 +48,4 @@ const ListingHead: React.FC<ListingHeadProps> = ({
 };
 
 export default ListingHead;
+

@@ -9,7 +9,7 @@ import EventTypeInput from "../Comp/inputs/EventTypeInput";
 import { FieldValues, useForm, SubmitHandler, useFieldArray, FormProvider} from "react-hook-form";
 import { title } from "process";
 import { watch } from "fs";
-import CountrySelect from "../Comp/inputs/CountrySelect";
+import CountrySelect from "../Comp/inputs/TownSelect";
 import dynamic from "next/dynamic";
 import Counter from "../Comp/inputs/Counter";
 import ImageUpload from "../Comp/inputs/ImageUpload";
@@ -18,6 +18,7 @@ import axios from "axios";
 import ServicesInput from "../Comp/inputs/ServicesInput";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import TownSelect from "../Comp/inputs/TownSelect";
 
 
 enum STEPS {
@@ -153,9 +154,9 @@ export default function Rent() {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Where is your place located?(Country)"
+          title="Where is your place located?(County)"
         />
-        <CountrySelect
+        <TownSelect
           value={location}
           onChange={(value) => setCustomValue('location', value)}/>
         <Map 

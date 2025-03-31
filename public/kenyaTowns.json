@@ -1,0 +1,419 @@
+[
+    {
+      "value": "NAIROBI",
+      "label": "Nairobi",
+      "region": "Kenya",
+      "latlng": [-1.286389, 36.817223],
+      "county": "Nairobi County"
+    },
+    {
+      "value": "MOMBASA",
+      "label": "Mombasa",
+      "region": "Kenya",
+      "latlng": [-4.043477, 39.668206],
+      "county": "Mombasa County"
+    },
+    {
+      "value": "KISUMU",
+      "label": "Kisumu",
+      "region": "Kenya",
+      "latlng": [-0.091702, 34.767956],
+      "county": "Kisumu County"
+    },
+    {
+      "value": "NAKURU",
+      "label": "Nakuru",
+      "region": "Kenya",
+      "latlng": [-0.303099, 36.080026],
+      "county": "Nakuru County"
+    },
+    {
+      "value": "ELDORET",
+      "label": "Eldoret",
+      "region": "Kenya",
+      "latlng": [0.514277, 35.269779],
+      "county": "Uasin Gishu County"
+    },
+    {
+      "value": "THIKA",
+      "label": "Thika",
+      "region": "Kenya",
+      "latlng": [-1.03326, 37.06933],
+      "county": "Kiambu County"
+    },
+    {
+      "value": "MACHAKOS",
+      "label": "Machakos",
+      "region": "Kenya",
+      "latlng": [-1.5177, 37.2634],
+      "county": "Machakos County"
+    },
+    {
+      "value": "KITALE",
+      "label": "Kitale",
+      "region": "Kenya",
+      "latlng": [1.016667, 35.016667],
+      "county": "Trans-Nzoia County"
+    },
+    {
+      "value": "GARISSA",
+      "label": "Garissa",
+      "region": "Kenya",
+      "latlng": [0.462778, 39.660556],
+      "county": "Garissa County"
+    },
+    {
+      "value": "MERU",
+      "label": "Meru",
+      "region": "Kenya",
+      "latlng": [0.047, 37.65],
+      "county": "Meru County"
+    },
+    {
+      "value": "NYERI",
+      "label": "Nyeri",
+      "region": "Kenya",
+      "latlng": [-0.416667, 36.95],
+      "county": "Nyeri County"
+    },
+    {
+      "value": "KAKAMEGA",
+      "label": "Kakamega",
+      "region": "Kenya",
+      "latlng": [0.283333, 34.75],
+      "county": "Kakamega County"
+    },
+    {
+      "value": "DIANI",
+      "label": "Diani",
+      "region": "Kenya",
+      "latlng": [-4.317, 39.536],
+      "county": "Kwale County"
+    },
+    {
+      "value": "RUIRU",
+      "label": "Ruiru",
+      "region": "Kenya",
+      "latlng": [-1.156, 36.978],
+      "county": "Kiambu County"
+    },
+    {
+      "value": "KERICHO",
+      "label": "Kericho",
+      "region": "Kenya",
+      "latlng": [-0.367, 35.283],
+      "county": "Kericho County"
+    },
+    {
+      "value": "NGONG",
+      "label": "Ngong",
+      "region": "Kenya",
+      "latlng": [-1.380, 36.695],
+      "county": "Kajiado County"
+    },
+    {
+      "value": "KITUI",
+      "label": "Kitui",
+      "region": "Kenya",
+      "latlng": [-1.391, 38.017],
+      "county": "Kitui County"
+    },
+    {
+      "value": "HOMA BAY",
+      "label": "Homa Bay",
+      "region": "Kenya",
+      "latlng": [0.5167, 34.450],
+      "county": "Homa Bay County"
+    },
+    {
+      "value": "KISERIAN",
+      "label": "Kiserian",
+      "region": "Kenya",
+      "latlng": [-1.353, 36.851],
+      "county": "Kajiado County"
+    },
+    {
+      "value": "BOMET",
+      "label": "Bomet",
+      "region": "Kenya",
+      "latlng": [-0.75, 35.45],
+      "county": "Bomet County"
+    },
+    {
+      "value": "MUMIAS",
+      "label": "Mumias",
+      "region": "Kenya",
+      "latlng": [0.35, 34.55],
+      "county": "Kakamega County"
+    },
+    {
+      "value": "KILIFI",
+      "label": "Kilifi",
+      "region": "Kenya",
+      "latlng": [-3.707, 39.696],
+      "county": "Kilifi County"
+    },
+    {
+      "value": "MALINDI",
+      "label": "Malindi",
+      "region": "Kenya",
+      "latlng": [-3.2167, 40.1167],
+      "county": "Kilifi County"
+    },
+    {
+      "value": "VIHIGA",
+      "label": "Vihiga",
+      "region": "Kenya",
+      "latlng": [0.05, 34.65],
+      "county": "Vihiga County"
+    },
+    {
+      "value": "MOLO",
+      "label": "Molo",
+      "region": "Kenya",
+      "latlng": [-0.316667, 36.966667],
+      "county": "Nakuru County"
+    },
+    {
+      "value": "LIMURU",
+      "label": "Limuru",
+      "region": "Kenya",
+      "latlng": [-1.1333, 36.6833],
+      "county": "Kiambu County"
+    },
+    {
+      "value": "KAPSABET",
+      "label": "Kapsabet",
+      "region": "Kenya",
+      "latlng": [0.416667, 35.083333],
+      "county": "Nandi County"
+    },
+    {
+      "value": "KIMILILI",
+      "label": "Kimilili",
+      "region": "Kenya",
+      "latlng": [-0.483333, 34.583333],
+      "county": "Bungoma County"
+    },
+    {
+      "value": "MIGORI",
+      "label": "Migori",
+      "region": "Kenya",
+      "latlng": [-1.133333, 34.483333],
+      "county": "Migori County"
+    },
+    {
+      "value": "BUNGOMA",
+      "label": "Bungoma",
+      "region": "Kenya",
+      "latlng": [-0.566667, 34.566667],
+      "county": "Bungoma County"
+    },
+    {
+      "value": "EMBU",
+      "label": "Embu",
+      "region": "Kenya",
+      "latlng": [-0.583333, 37.450000],
+      "county": "Embu County"
+    },
+    {
+      "value": "TETU",
+      "label": "Tetu",
+      "region": "Kenya",
+      "latlng": [-0.533333, 36.983333],
+      "county": "Nyeri County"
+    },
+    {
+      "value": "LAVINGTON",
+      "label": "Lavington",
+      "region": "Kenya",
+      "latlng": [-1.285000, 36.820000],
+      "county": "Nairobi County"
+    },
+    {
+      "value": "WESTLANDS",
+      "label": "Westlands",
+      "region": "Kenya",
+      "latlng": [-1.273000, 36.815000],
+      "county": "Nairobi County"
+    },
+    {
+      "value": "KAHAWASUKARI",
+      "label": "Kahawasukari",
+      "region": "Kenya",
+      "latlng": [-1.533333, 37.083333],
+      "county": "Machakos County"
+    },
+    {
+      "value": "KAHAWA WENDANI",
+      "label": "Kahawa Wendani",
+      "region": "Kenya",
+      "latlng": [-1.233333, 36.933333],
+      "county": "Nairobi County"
+    },
+    {
+      "value": "JUJA",
+      "label": "Juja",
+      "region": "Kenya",
+      "latlng": [-1.016667, 36.966667],
+      "county": "Kiambu County"
+    },
+    {
+      "value": "KISII",
+      "label": "Kisii",
+      "region": "Kenya",
+      "latlng": [-0.683333, 34.766667],
+      "county": "Kisii County"
+    },
+    {
+      "value": "NAYUKI",
+      "label": "Nayuki",
+      "region": "Kenya",
+      "latlng": [-0.600000, 34.800000],
+      "county": "Nyamira County"
+    },
+    {
+      "value": "NAROK",
+      "label": "Narok",
+      "region": "Kenya",
+      "latlng": [-1.078, 35.987],
+      "county": "Narok County"
+    },
+    {
+      "value": "SIAYA",
+      "label": "Siaya",
+      "region": "Kenya",
+      "latlng": [0.05, 34.30],
+      "county": "Siaya County"
+    },
+    {
+      "value": "BUSIA",
+      "label": "Busia",
+      "region": "Kenya",
+      "latlng": [0.45, 34.09],
+      "county": "Busia County"
+    },
+    {
+      "value": "LAMU",
+      "label": "Lamu",
+      "region": "Kenya",
+      "latlng": [-2.285, 40.900],
+      "county": "Lamu County"
+    },
+    {
+      "value": "KWALE",
+      "label": "Kwale",
+      "region": "Kenya",
+      "latlng": [-4.150, 39.500],
+      "county": "Kwale County"
+    },
+    {
+      "value": "KENDU BAY",
+      "label": "Kendu Bay",
+      "region": "Kenya",
+      "latlng": [0.43, 34.60],
+      "county": "Homa Bay County"
+    },
+    {
+      "value": "MAKUENI",
+      "label": "Makueni",
+      "region": "Kenya",
+      "latlng": [-1.38, 37.64],
+      "county": "Makueni County"
+    },
+    {
+      "value": "VOI",
+      "label": "Voi",
+      "region": "Kenya",
+      "latlng": [-3.37, 38.68],
+      "county": "Taita Taveta County"
+    },
+    {
+      "value": "MARALAL",
+      "label": "Maralal",
+      "region": "Kenya",
+      "latlng": [1.06, 36.93],
+      "county": "Samburu County"
+    },
+    {
+      "value": "ISIENO",
+      "label": "Isiolo",
+      "region": "Kenya",
+      "latlng": [0.35, 37.58],
+      "county": "Isiolo County"
+    },
+    {
+      "value": "RUMURUTI",
+      "label": "Rumuruti",
+      "region": "Kenya",
+      "latlng": [0.12, 36.88],
+      "county": "Laikipia County"
+    },
+    {
+      "value": "NANYUKI",
+      "label": "Nanyuki",
+      "region": "Kenya",
+      "latlng": [0.01, 37.07],
+      "county": "Laikipia County"
+    },
+    {
+      "value": "ELDAMA RAVINE",
+      "label": "Eldama Ravine",
+      "region": "Kenya",
+      "latlng": [0.40, 35.95],
+      "county": "Baringo County"
+    },
+    {
+      "value": "KABARNET",
+      "label": "Kabarnet",
+      "region": "Kenya",
+      "latlng": [0.18, 35.67],
+      "county": "Baringo County"
+    },
+    {
+      "value": "LOITOKITOK",
+      "label": "Loitokitok",
+      "region": "Kenya",
+      "latlng": [-2.78, 36.93],
+      "county": "Kajiado County"
+    },
+    {
+      "value": "LODWAR",
+      "label": "Lodwar",
+      "region": "Kenya",
+      "latlng": [3.12, 35.92],
+      "county": "Turkana County"
+    },
+    {
+      "value": "MARAGUA",
+      "label": "Maragua",
+      "region": "Kenya",
+      "latlng": [-0.92, 37.28],
+      "county": "Murang'a County"
+    },
+    {
+      "value": "CHUKA",
+      "label": "Chuka",
+      "region": "Kenya",
+      "latlng": [0.88, 37.38],
+      "county": "Tharaka Nithi County"
+    },
+    {
+      "value": "OYUGIS",
+      "label": "Oyugis",
+      "region": "Kenya",
+      "latlng": [0.25, 34.80],
+      "county": "Kisumu County"
+    },
+    {
+      "value": "MOYALE",
+      "label": "Moyale",
+      "region": "Kenya",
+      "latlng": [3.57, 39.68],
+      "county": "Marsabit County"
+    }
+  ]
+  
+  
+
+  
