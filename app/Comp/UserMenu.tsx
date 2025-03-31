@@ -77,12 +77,15 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                                 <div className="px-4 py-2 font-bold text-center text-[#171666]">
                                     Hi, {currentUser.name || 'Guest'}
                                 </div>
+                                {currentUser && currentUser.email === "daisyimg65@gmail.com" && (
+                                    <MenuItem onClick={() => router.push("/admin")} label="Admin" />
+                                )}
                                 <MenuItem onClick={() => router.push("/events")} label="My Events" />
                                 <MenuItem onClick={() => router.push("/bookings")} label="My Bookings" />
                                 <MenuItem onClick={() => router.push("/favorites")} label="My Favorites" />
                                 <MenuItem onClick={() => router.push("/listings")} label="My Listings" />
                                 <MenuItem onClick={onRent} label="List My Space" />
-                                <MenuItem onClick={() => signOut()} label="Logout" />
+                                <MenuItem onClick={() => signOut({ callbackUrl: '/' })} label="Logout" />
                             </>
                         ) : (
                             <>

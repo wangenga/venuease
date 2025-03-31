@@ -9,6 +9,7 @@ import SearchModal from '../Comp/Modals/SearchModal';
 
 import ClientOnly from '../Comp/ClientOnly';
 import FiltersButton from '../Comp/FiltersButton';
+import Search from '../Comp/Search';
 
 interface BrowseSpacesProps {
   searchParams: IListingsParams
@@ -34,7 +35,6 @@ const BrowseSpaces = async ({ searchParams }: BrowseSpacesProps) => {
         <p className="text-left text-xl font-bold mb-2">
           Available Spaces
         </p>
-        
         <hr />
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
           {listings.map((listing: any) => (

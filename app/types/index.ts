@@ -22,3 +22,13 @@ export type SafeBooking = Omit<
 export type SafeListing = Omit<Listing, "createdAt"> & {
   createdAt: string;
 };
+
+export type SafeListingExtended = SafeListing & {
+  user: {
+    name: string;
+    email: string;
+  };
+  _count: {
+    bookings: number;
+  };
+};

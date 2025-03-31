@@ -41,7 +41,7 @@
     "next-env.d.ts",
     "next/types/**/*.ts",
     ".next/types/**/*.ts"
-  ],
+, "app/hooks/useAddUserModal.ts"  ],
   "exclude": [
     "node_modules"
   ]
