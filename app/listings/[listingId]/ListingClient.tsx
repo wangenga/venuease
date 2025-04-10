@@ -13,6 +13,9 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import toast from 'react-hot-toast';
 import { Service } from '@/app/Comp/listings/ListingAdditionalServices';
 import { Range } from 'react-date-range';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
+
 
 
 const initialDateRange = {
@@ -61,6 +64,53 @@ const ListingClient: React.FC<ListingClientProps> = ({
     ? listing.additionalServices as Service[]
     : [];
 
+    const generateReceipt = () => {
+      const doc = new jsPDF();
+      
+      // Add Logo
+      const img = new Image();
+      img.src = '/logo.png';
+      doc.addImage(img, 'PNG', 10, 10, 50, 20);
+      
+      // Add Heading
+      doc.setFontSize(14);
+      doc.text('Your Favourite Event Booking Platform', 105, 40, { align: 'center' });
+      
+      doc.setFontSize(16);
+      doc.text('Booking Receipt', 105, 50, { align: 'center' });
+  
+      // Table Data
+      const tableData = [
+          ['Listing Name', 'Start Date', 'End Date'],
+          [listing.title, dateRange.startDate?.toDateString() || 'N/A', dateRange.endDate?.toDateString() || 'N/A'],
+      ];
+  
+      if (selectedServices.length > 0) {
+          tableData.push(['Additional Services', 'Price']);
+          selectedServices.forEach(service => {
+              tableData.push([service.name, `KSh ${service.price}`]);
+          });
+      }
+  
+      tableData.push(['Total Price', `KSh ${totalPrice}`]);
+  
+      // Use autoTable safely
+      (doc as any).autoTable({
+          startY: 60,
+          head: [],
+          body: tableData,
+          theme: 'grid'
+      });
+  
+      // Add Footer
+      doc.setFontSize(12);
+      doc.text('Thank you for partnering with us', 105, doc.internal.pageSize.height - 10, { align: 'center' });
+  
+      doc.save('receipt.pdf');
+  };
+  
+  
+
   const onCreateBooking = useCallback(() => {
     if (!currentUser) {
       // If user is not logged in, open the login modal
@@ -78,6 +128,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
       toast.success("Listing Reserved!");
       setDateRange(initialDateRange);
       setSelectedServices([]);
+      generateReceipt();
       router.push('/events');
     })
     .catch((error) => {

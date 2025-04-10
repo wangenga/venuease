@@ -59,12 +59,6 @@ const AdminUsersClient: React.FC<AdminUsersClientProps> = ({ initialUsers }) => 
     <div className="p-6">
       <h1 className="text-3xl font-bold mb-4">Admin Dashboard - Users</h1>
       <div className="flex py-3 flex-row justify-between">
-        <Button 
-            onClick={() => addUserModal.onOpen()}
-            label="Add User" 
-            className="w-1/5  px-4 p-2"
-        />
-        <ExportPdfButton />
         
       </div>
 

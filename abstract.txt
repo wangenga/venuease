@@ -1,0 +1,33 @@
+VenuEase: A Web-Based Venue Booking and Management Platform
+
+
+VenueEase is a web-based event venue booking system designed to simplify and optimize the process of finding, managing, and booking venues for a wide range of events. This platform addresses common frustrations in venue booking, such as lack of transparency, difficulty in availability tracking, and absence of essential feature details like parking, security, or accessibility.
+
+The system allows venue owners to list their spaces, manage bookings, and highlight additional services offered, while clients can search venues based on event type, capacity, location, features, and availability. The platform reduces overbooking risks, enhances booking clarity, and supports informed decision-making through a user-friendly interface.
+
+The project is developed using modern technologies such as Next.js, React, Tailwind CSS, Prisma, and MongoDB. NextAuth handles authentication while Cloudinary manages image storage. Axios facilitates API communication. VenueEase also uses GitHub for version control and adopts the Waterfall methodology for systematic development.
+
+This system ultimately aims to enhance efficiency and trust between venue owners and event organizers, ensuring seamless planning experiences.
+
+
+For Clients
+
+Search venues based on event type, location, and availability
+View venue details, including amenities, services, and pricing
+Book a venue and pay a deposit
+Manage bookings and view transaction history
+
+For Hosts
+
+List venues with images, descriptions, and pricing
+Manage venue availability and booking requests
+Offer additional services such as catering, decorations, and parking
+Receive booking notifications and manage payments
+
+
+Technologies Used
+
+Frontend: Next.js, React, Tailwind CSS, TypeScript
+Backend: Node.js, Express.js
+Database: MongoDB (Drizzle ORM)
+Authentication: NextAuth.js

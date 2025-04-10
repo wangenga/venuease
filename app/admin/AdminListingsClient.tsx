@@ -1,16 +1,18 @@
 'use client';
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Button from "@/app/Comp/Button";
 import { SafeListingExtended } from "@/app/types";
 import ExportPdfButton from "../Comp/ExportPdfButton";
+import AdminListingsReport from "./AdminListingsReport";
 
 interface AdminListingsClientProps {
   initialListings: SafeListingExtended[];
 }
 
 const AdminListingsClient: React.FC<AdminListingsClientProps> = ({ initialListings }) => {
+  const reportRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const [listings, setListings] = useState<SafeListingExtended[]>(initialListings);
 
@@ -29,7 +31,7 @@ const AdminListingsClient: React.FC<AdminListingsClientProps> = ({ initialListin
     <div className="p-6">
       <h1 className="text-3xl font-bold mb-4">Admin Dashboard - Listings</h1>
       <div className="flex py-3 flex-row justify-between">
-        <ExportPdfButton />
+        
       </div>
       <table className="w-full border-collapse border border-gray-300">
         <thead>
