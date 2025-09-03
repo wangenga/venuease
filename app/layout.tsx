@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Comp/Navbar";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import ToasterProvider from "./providers/ToasterProvider";
 import LoginModal from "./Comp/Modals/LoginModal";
 import RegisterModal from "./Comp/Modals/RegisterModal";
@@ -36,6 +37,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ToasterProvider />
+        <SpeedInsights />
         {!currentUser && <LoginModal />}
         {!currentUser && <RegisterModal />}
         <Navbar currentUser={currentUser} />
