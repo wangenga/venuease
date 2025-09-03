@@ -64,54 +64,78 @@ const ListingClient: React.FC<ListingClientProps> = ({
     ? listing.additionalServices as Service[]
     : [];
 
-    const generateReceipt = () => {
+    const generateReceipt = async () => {
       const doc = new jsPDF();
-      
-      // Add Logo
-      const img = new Image();
-      img.src = '/logo.png';
-      doc.addImage(img, 'PNG', 10, 10, 50, 20);
-      
+
+      // Add Logo (wait for image to fully load)
+      try {
+        const img = await new Promise<HTMLImageElement>((resolve, reject) => {
+          const image = new Image();
+          image.onload = () => resolve(image);
+          image.onerror = reject;
+          image.src = '/images/logo.png';
+        });
+        const pageWidth = (doc as any).internal.pageSize.getWidth
+          ? (doc as any).internal.pageSize.getWidth()
+          : (doc as any).internal.pageSize.width;
+        const logoWidth = 50;
+        const logoHeight = 20;
+        const logoX = (pageWidth - logoWidth) / 2;
+        const logoY = 10;
+        doc.addImage(img, 'PNG', logoX, logoY, logoWidth, logoHeight);
+      } catch (_) {
+        // If logo fails to load, continue without it
+      }
+
       // Add Heading
       doc.setFontSize(14);
       doc.text('Your Favourite Event Booking Platform', 105, 40, { align: 'center' });
-      
+
       doc.setFontSize(16);
       doc.text('Booking Receipt', 105, 50, { align: 'center' });
-  
+
       // Table Data
-      const tableData = [
-          ['Listing Name', 'Start Date', 'End Date'],
-          [listing.title, dateRange.startDate?.toDateString() || 'N/A', dateRange.endDate?.toDateString() || 'N/A'],
+      const tableData: (string | number)[][] = [
+        ['Listing Name', 'Start Date', 'End Date'],
+        [
+          listing.title,
+          dateRange.startDate?.toDateString() || 'N/A',
+          dateRange.endDate?.toDateString() || 'N/A',
+        ],
       ];
-  
+
       if (selectedServices.length > 0) {
-          tableData.push(['Additional Services', 'Price']);
-          selectedServices.forEach(service => {
-              tableData.push([service.name, `KSh ${service.price}`]);
-          });
+        tableData.push(['Additional Services', 'Price']);
+        selectedServices.forEach((service) => {
+          tableData.push([service.name, `KSh ${service.price}`]);
+        });
       }
-  
+
       tableData.push(['Total Price', `KSh ${totalPrice}`]);
-  
-      // Use autoTable safely
-      (doc as any).autoTable({
-          startY: 60,
-          head: [],
-          body: tableData,
-          theme: 'grid'
+
+      // Use autoTable with the helper function
+      autoTable(doc, {
+        startY: 60,
+        head: [],
+        body: tableData,
+        theme: 'grid',
       });
-  
+
       // Add Footer
       doc.setFontSize(12);
-      doc.text('Thank you for partnering with us', 105, doc.internal.pageSize.height - 10, { align: 'center' });
-  
+      doc.text(
+        'Thank you for partnering with us',
+        105,
+        doc.internal.pageSize.height - 10,
+        { align: 'center' }
+      );
+
       doc.save('receipt.pdf');
-  };
+    };
   
   
 
-  const onCreateBooking = useCallback(() => {
+  const onCreateBooking = useCallback(async () => {
     if (!currentUser) {
       // If user is not logged in, open the login modal
       return loginModal.onOpen();
@@ -124,11 +148,11 @@ const ListingClient: React.FC<ListingClientProps> = ({
       listingId:listing?.id,
       selectedServices,
     })
-    .then(() => {
+    .then(async () => {
       toast.success("Listing Reserved!");
       setDateRange(initialDateRange);
       setSelectedServices([]);
-      generateReceipt();
+      await generateReceipt();
       router.push('/events');
     })
     .catch((error) => {
