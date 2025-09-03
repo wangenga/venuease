@@ -11,6 +11,9 @@ import ClientOnly from '../Comp/ClientOnly';
 import FiltersButton from '../Comp/FiltersButton';
 import Search from '../Comp/Search';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 interface BrowseSpacesProps {
   searchParams: IListingsParams
 }

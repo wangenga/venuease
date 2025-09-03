@@ -1,9 +1,12 @@
-// app/trips/page.tsx (or wherever your TripsPage is located)
+// app/events/page.tsx
 import EmptyState from "../Comp/EmptyState";
 import ClientOnly from "../Comp/ClientOnly";
 import getCurrentUser from "../actions/getCurrentUser";
 import getBookings from "../actions/getBooking";
 import EventsClient from "./EventsClient";
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 const EventsPage = async () => {
   const currentUser = await getCurrentUser();

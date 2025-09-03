@@ -10,7 +10,7 @@ import { FieldValues, useForm, SubmitHandler, useFieldArray, FormProvider} from 
 import { title } from "process";
 import { watch } from "fs";
 import CountrySelect from "../Comp/inputs/TownSelect";
-import dynamic from "next/dynamic";
+import nextDynamic from "next/dynamic";
 import Counter from "../Comp/inputs/Counter";
 import ImageUpload from "../Comp/inputs/ImageUpload";
 import Input from "../Comp/inputs/Input";
@@ -64,7 +64,7 @@ export default function Rent() {
   const services = watch("services");
   const price = watch("price");
 
-  const Map = useMemo(() => dynamic(() => import ("../Comp/Map"), {
+  const Map = useMemo(() => nextDynamic(() => import ("../Comp/Map"), {
     ssr: false
   }), [location]);
 

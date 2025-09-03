@@ -4,6 +4,9 @@ import getCurrentUser from "../actions/getCurrentUser";
 import getListings from "../actions/getListings";
 import ListingsClient from "./ListingsClient";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 const ListingsPage = async () => {
   const currentUser = await getCurrentUser();
 

@@ -7,6 +7,9 @@ import LoginModal from "./Comp/Modals/LoginModal";
 import RegisterModal from "./Comp/Modals/RegisterModal";
 import getCurrentUser from "./actions/getCurrentUser";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

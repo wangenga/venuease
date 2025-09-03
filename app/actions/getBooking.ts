@@ -6,7 +6,9 @@ interface Iparams {
   authorId?: string;
 }
 
-export default async function getBookings(params: Iparams) {
+import { SafeBooking, SafeListing } from "@/app/types";
+
+export default async function getBookings(params: Iparams): Promise<SafeBooking[]> {
   try {
     const { listingId, userId, authorId } = params;
     const query: any = {};
@@ -37,22 +39,23 @@ export default async function getBookings(params: Iparams) {
       },
     });
 
-    const safeBookings = bookings
+    const safeBookings: SafeBooking[] = bookings
       .filter((booking) => booking.listing !== null)
-      .map((booking) => ({
-        ...booking,
-        createdAt: booking.createdAt.toISOString(),
-        startDate: booking.startDate.toISOString(),
-        endDate: booking.endDate.toISOString(),
-        listing: booking.listing
-          ? {
-              ...booking.listing,
-              createdAt: booking.listing.createdAt.toISOString(),
-              // Include the user as-is or map it to your safe user type if needed:
-              user: booking.listing.user,
-            }
-          : null,
-      }));
+      .map((booking) => {
+        const safeListing: SafeListing = {
+          ...(booking.listing as any),
+          createdAt: booking.listing!.createdAt.toISOString(),
+        };
+
+        return {
+          ...booking,
+          createdAt: booking.createdAt.toISOString(),
+          startDate: booking.startDate.toISOString(),
+          endDate: booking.endDate.toISOString(),
+          // listing is guaranteed non-null after filter
+          listing: safeListing,
+        } as unknown as SafeBooking;
+      });
 
     return safeBookings;
   } catch (error: any) {
